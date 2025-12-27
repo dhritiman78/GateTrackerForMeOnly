@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GATE Lectures Tracker</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #6366f1;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --success: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    /* Progress bar */
+    .progress-container {
+      background: var(--border);
+      border-radius: 20px;
+      height: 18px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--success));
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Sections */
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+
+    .section > h2 {
+      margin-bottom: 12px;
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .item:hover {
+      background: #f1f5f9;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>GATE Lecture Progress Tracker</h1>
+
+  <!-- Progress -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="progress-text" id="progressText">0% completed</div>
+
+  <!-- Theory of Computation -->
+  <div class="section">
+    <h2>Theory of Computation</h2>
+    <ul>
+      <li class="item">
+        <input type="checkbox" data-id="toc-1">
+        <a href="https://t.me/c/2230975920/905">Basics</a>
+      </li>
+      <li class="item">
+        <input type="checkbox" data-id="toc-2">
+        <a href="https://t.me/c/2230975920/906">Alphabets and Strings</a>
+      </li>
+      <li class="item">
+        <input type="checkbox" data-id="toc-3">
+        <a href="https://t.me/c/2230975920/907">Concatenation and power of strings</a>
+      </li>
+      <li class="item">
+        <input type="checkbox" data-id="toc-4">
+        <a href="https://t.me/c/2230975920/908">Prefix, Suffix and Substring of a string</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Digital Logic Design -->
+  <div class="section">
+    <h2>Digital Logic Design</h2>
+    <p class="muted">Lectures coming soon</p>
+  </div>
+
+  <!-- COA -->
+  <div class="section">
+    <h2>Computer Organization and Architecture</h2>
+    <ul>
+      <li class="item">
+        <input type="checkbox" data-id="coa-1">
+        <a href="https://t.me/c/2230975920/1029">Introduction</a>
+      </li>
+      <li class="item">
+        <input type="checkbox" data-id="coa-2">
+        <a href="https://t.me/c/2230975920/1030">Components of Computer</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Other Subjects -->
+  <div class="section">
+    <h2>Data Structures</h2>
+    <p class="muted">Lectures coming soon</p>
+  </div>
+
+  <div class="section">
+    <h2>Algorithms</h2>
+    <p class="muted">Lectures coming soon</p>
+  </div>
+
+  <div class="section">
+    <h2>Operating Systems</h2>
+    <p class="muted">Lectures coming soon</p>
+  </div>
+
+  <div class="section">
+    <h2>Databases</h2>
+    <p class="muted">Lectures coming soon</p>
+  </div>
+
+  <!-- CN -->
+  <div class="section">
+    <h2>Computer Networks</h2>
+    <ul>
+      <li class="item">
+        <input type="checkbox" data-id="cn-1">
+        <a href="https://t.me/c/2230975920/1134">Introduction to Computer Networks</a>
+      </li>
+      <li class="item">
+        <input type="checkbox" data-id="cn-2">
+        <a href="https://t.me/c/2230975920/1135">Introduction to Computer Networks part 2</a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+
+    function loadState() {
+      checkboxes.forEach(cb => {
+        const saved = localStorage.getItem(cb.dataset.id);
+        cb.checked = saved === "true";
+      });
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const total = checkboxes.length;
+      const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+      const percent = total === 0 ? 0 : Math.round((checked / total) * 100);
+
+      progressBar.style.width = percent + "%";
+      progressText.textContent = `${percent}% completed`;
+    }
+
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        localStorage.setItem(cb.dataset.id, cb.checked);
+        updateProgress();
+      });
+    });
+
+    loadState();
+  </script>
+
+</body>
+</html>
